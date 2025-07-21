@@ -361,6 +361,7 @@
   test-data: |    
     "нет данных"
   steps:
+    Открыть Dev Tools (F12) 
     На главной странице пройтись по вкладкам (Lobby, Tournamets, History)
     В блоке "Leaderboard" пройтись по вкладкам (Week, Month, All)
     Нажать на свой никнейм, в выпадающем списке пройтись по вкладкам (My profile, Settings, Tasks, Clans)
