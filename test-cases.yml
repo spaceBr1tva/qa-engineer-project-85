@@ -10,11 +10,94 @@
   steps:
     - Нажать кнопку "Create a game"
     - Нажать кнопку "With a bot"
-    - Создайть задачу по поиску площади прямоугольника (rect_area)
     - Нажать кнопку "RUN"
     - Ещё несколько раз нажать кнопку "RUN"
   expected-result: |
     Решение было проверенно, решение можно проверить неограниченное количество раз
+
+- summary: |
+    Проверка возможности покинуть лобби после выполнения задания
+  requirement: |
+    Победитель должен иметь возможность покинуть лобби после выполнения задания не дожидаясь оппонента
+  prerequisites: |
+    Открыта главная страница codebattle.hexlet.io
+    Произведён вход в учётную запись
+  test-data: |
+    "нет данных"
+  steps:
+    - Нажать кнопку "Create a game"
+    - Нажать кнопку "With a bot"
+    - Создайть задачу по поиску площади прямоугольника (rect_area)
+    - Нажать кнопку "Create batle"
+    - Ввести данное решение 
+      const _ = require("lodash");
+      const R = require("rambda");
+
+      const solution = (width, length) => {
+        return width * length;
+      };
+
+      module.exports = solution;
+    
+    - Нажать кнопку "RUN"
+    - Нажать кнопку "Back to home"
+  expected-result: |
+    Победивший пользователь может покинуть лобби после выполнения задания не дожидаясь решения оппонента
+
+- summary: |
+    Проверка возможности завершения задания после победы оппонента 
+  requirement: |
+    Игра должна продолжаться пока оба игрока не покинут лобби дав возможность проигравшему завершить задание
+  prerequisites: |
+    Открыта главная страница codebattle.hexlet.io
+    Произведён вход в учётную запись No1
+    Произведён вход в учётную запись No2
+  test-data: |
+    Учётная запись No1 (Nickmame - ForTests1) (Emeil - ForTests@nomail.ru) (Password - qwert!1)
+    Учётная запись No2 (Nickmame - ForTests2) (Emeil - ForTests2@nomail.ru) (Password - qwert!1)
+  steps:
+    - Через учётную запись No1 Нажать кнопку "Create a game"
+    - Нажать кнопку "With other users"
+    - Создайть задачу по поиску площади прямоугольника (rect_area)
+    - Нажать кнопку "Create batle"
+    - Через учётную запись No2 Подключится к лобби ForTests1
+    - Ввести данное решение 
+      const _ = require("lodash");
+      const R = require("rambda");
+
+      const solution = (width, length) => {
+        return width * length;
+      };
+
+      module.exports = solution;
+    
+    - Нажать кнопку "RUN"
+    - Нажать кнопку "Back to home"
+    - Через учётную запись No1 ввести решение
+    - Нажать кнопку "RUN"
+  expected-result: |
+    После победы игрока No2, игрок No1 может завершить задание, а игра завершается только после выхода из лобби обоих игроков
+
+- summary: |
+    Проверка возможности переподключения к игре после отключения 
+  requirement: |
+    Пользователи должны иметь возможность переподключаться к лобби в случае отключения от игры
+  prerequisites: |
+    Открыта главная страница codebattle.hexlet.io
+    Произведён вход в учётную запись No1
+    Произведён вход в учётную запись No2
+  test-data: |
+    Учётная запись No1 (Nickmame - ForTests1) (Emeil - ForTests@nomail.ru) (Password - qwert!1)
+    Учётная запись No2 (Nickmame - ForTests2) (Emeil - ForTests2@nomail.ru) (Password - qwert!1)
+  steps:
+    - Через учётную запись No1 Нажать кнопку "Create a game"
+    - Нажать кнопку "With other users"
+    - Нажать кнопку "Create batle"
+    - Через учётную запись No2 Подключится к лобби ForTests1
+    - Нажать кнопку "Back to home"
+    - Нажать кнопку "Continue"
+  expected-result: |
+    К игре можно переподключиться в случае отключения    
 
 - summary: |
     Проверка возможности успешной регистрации пользователя
