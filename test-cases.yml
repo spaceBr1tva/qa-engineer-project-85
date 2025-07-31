@@ -134,10 +134,11 @@
   requirement: |
     Пользователь должен иметь возможность входить в систему с использованием учетных данных
   prerequisites: |
-    Открыта форма авторизации сайта codebattle.hexlet.io
+    Открыта главная страница сайта codebattle.hexlet.io
   test-data: |
     Учётная запись No1 (Nickmame - ForTests1) (Emeil - ForTests@nomail.ru) (Password - qwert!1)
   steps:
+    - Нажать кнопку "Sing in"
     - Заполнить форму авторизации
     - Нажать кнопку "Submit"
   expected-result: |
