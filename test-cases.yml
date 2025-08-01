@@ -1,4 +1,37 @@
 - summary: |
+    Проверка наличия модального окна при победе и пройгрыше
+  requirement: |
+    Когда один из игроков находит верное решение обоим игрокам должно высвечиваться модальное окно где написано кто является победителем этой игры
+  prerequisites: |
+    Открыта главная страница codebattle.hexlet.io
+    Произведён вход в учётную запись No1
+    Произведён вход в учётную запись No2 
+  test-data: |
+    Учётная запись No1 (Nickmame - ForTests1) (Emeil - ForTests@nomail.ru) (Password - qwert!1)
+    Учётная запись No2 (Nickmame - ForTests2) (Emeil - ForTests2@nomail.ru) (Password - qwert!1)
+  steps:
+    - Через учётную запись No1 нажать кнопку "Create game"
+    - Game Type выбрать "With other users"
+    - Остальные параметры оставляем по умолчанию
+    - Нажать кнопку "Create battle"
+    - Через учётную запись No2 найти в списке лобби игру игрока ForTests1
+    - Нажать кнопку Fight
+    - Ввести данное решение 
+      const _ = require("lodash");
+      const R = require("rambda");
+
+      const solution = (width, length) => {
+        return width * length;
+      };
+
+      module.exports = solution;
+    
+    - Нажать кнопку "RUN"
+  expected-result: |
+    Игра успешно завершилась у игрока "ForTests1" высветилось модальное окно говорящее о проигрыше 
+    Игра успешно завершилась у игрока "ForTests2" высветилось модальное окно говорящее о выигрыше 
+
+- summary: |
     Проверка возможности завершения игры победой и проигрышем
   requirement: |
     У игры должны быть варианты завершения (победа, проигрыш, по таймеру, сдаться)
